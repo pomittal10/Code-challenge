@@ -1,0 +1,6 @@
+link-local address - 253.177.253.177
+
+ssh -i ~/.ssh/key-name.pem ec2-user@ec2-134-70-56-99.compute-1.amazonaws.com
+
+Get the latest vhost metadata
+curl http://253.177.253.177/latest/meta-data/metrics/vhostmd | python -mjson.tool > out.json

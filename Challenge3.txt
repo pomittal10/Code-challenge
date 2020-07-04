@@ -1,0 +1,14 @@
+public String getValueFromObjectGivenKeys(Object Obj, String[] keys) {
+    String currentKey = keys[0];
+
+    if (keys.length == 1 && Obj.has(currentKey)) {
+      return Obj.getString(currentKey);
+    } else if (!Obj.has(currentKey)) {
+      throw new UnprocessableEntityException(currentKey + "is not a valid key.");
+    }
+
+    Object nestedObjVal = Obj.getObject(currentKey);
+    int nextKeyIdx = 1;
+    String[] remainingKeys = Arrays.copyOfRange(keys, nextKeyIdx, keys.length);
+    return getValueFromObjectGivenKeys(nestedObjectVal, remainingKeys);
+  }
